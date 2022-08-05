@@ -15306,6 +15306,7 @@
 /obj/effect/turf_decal/plaque{
 	icon_state = "L3"
 	},
+/obj/machinery/computer/card/minor/ce,
 /turf/open/floor/plasteel,
 /area/hallway/primary/central)
 "aMa" = (
@@ -15318,24 +15319,28 @@
 /obj/effect/turf_decal/plaque{
 	icon_state = "L7"
 	},
+/obj/machinery/computer/card/minor/hos,
 /turf/open/floor/plasteel,
 /area/hallway/primary/central)
 "aMc" = (
 /obj/effect/turf_decal/plaque{
 	icon_state = "L5"
 	},
+/obj/machinery/computer/card/minor/cmo,
 /turf/open/floor/plasteel,
 /area/hallway/primary/central)
 "aMd" = (
 /obj/effect/turf_decal/plaque{
 	icon_state = "L11"
 	},
+/obj/machinery/computer/card/minor/rd,
 /turf/open/floor/plasteel,
 /area/hallway/primary/central)
 "aMe" = (
 /obj/effect/turf_decal/plaque{
 	icon_state = "L9"
 	},
+/obj/machinery/computer/card/minor/qm,
 /turf/open/floor/plasteel,
 /area/hallway/primary/central)
 "aMf" = (
@@ -19265,17 +19270,7 @@
 /turf/open/floor/plasteel,
 /area/command/bridge)
 "aWS" = (
-/obj/structure/cable{
-	icon_state = "1-2"
-	},
-/obj/machinery/atmospherics/pipe/simple/supply/hidden{
-	dir = 4
-	},
-/obj/effect/turf_decal/tile/blue,
-/obj/effect/turf_decal/tile/blue{
-	dir = 8
-	},
-/turf/open/floor/plasteel,
+/turf/open/space/basic,
 /area/command/bridge)
 "aWT" = (
 /obj/machinery/requests_console{
@@ -28034,11 +28029,7 @@
 	},
 /area/science)
 "bsY" = (
-/obj/structure/chair/office/dark{
-	dir = 4
-	},
-/obj/effect/landmark/start/head_of_personnel,
-/turf/open/floor/plasteel,
+/turf/open/space/basic,
 /area/command/heads_quarters/hop)
 "bsZ" = (
 /obj/structure/disposalpipe/segment{
@@ -59900,6 +59891,10 @@
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor/plating,
 /area/security/prison/upper)
+"nMR" = (
+/obj/machinery/computer/card,
+/turf/open/floor/plasteel,
+/area/hallway/primary/central)
 "nNF" = (
 /obj/machinery/light{
 	dir = 1
@@ -61650,6 +61645,10 @@
 /obj/structure/lattice/catwalk,
 /turf/open/space,
 /area/solars/port/fore)
+"qjc" = (
+/obj/machinery/computer/card/centcom,
+/turf/open/floor/plasteel,
+/area/hallway/primary/central)
 "qje" = (
 /obj/structure/sign/mining{
 	pixel_y = 7
@@ -64412,6 +64411,13 @@
 	},
 /turf/open/floor/plasteel/cafeteria,
 /area/security/prison/upper)
+"tQH" = (
+/obj/structure/chair/office/dark{
+	dir = 4
+	},
+/obj/effect/landmark/start/head_of_personnel,
+/turf/open/floor/plasteel,
+/area/hallway/primary/central)
 "tRe" = (
 /obj/machinery/chem_master,
 /turf/open/floor/plasteel/white,
@@ -95512,7 +95518,7 @@ ayW
 aJn
 aJn
 aJq
-aJq
+nMR
 aOE
 aPS
 aRi
@@ -96541,7 +96547,7 @@ aJq
 aJq
 aMb
 aNx
-aOE
+tQH
 aPS
 aRm
 aSy
@@ -97568,7 +97574,7 @@ dgz
 aJn
 aJn
 aJq
-aJq
+qjc
 aOE
 aPS
 aRq

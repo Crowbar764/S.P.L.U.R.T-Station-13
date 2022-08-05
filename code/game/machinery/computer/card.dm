@@ -19,6 +19,7 @@ GLOBAL_VAR_INIT(time_last_changed_position, 0)
 	var/mode = 0
 	var/printing = null
 	var/target_dept = 0 //Which department this computer has access to. 0=all departments
+	var/legacy = FALSE
 
 	//Cooldown for closing positions in seconds
 	//if set to -1: No cooldown... probably a bad idea
@@ -184,8 +185,70 @@ GLOBAL_VAR_INIT(time_last_changed_position, 0)
 			updateUsrDialog()
 			return TRUE
 
-/obj/machinery/computer/card/ui_interact(mob/user)
-	. = ..()
+/obj/machinery/computer/card/ui_data(mob/user)
+	. = list()
+
+	if (inserted_scan_id)
+		.["card_auth_name"] = inserted_scan_id.registered_name
+		.["card_auth_job_name"] = inserted_scan_id.assignment
+
+	if (inserted_modify_id)
+		.["card_target_name"] = inserted_modify_id.registered_name
+		.["card_target_job_name"] = inserted_modify_id.assignment
+
+		var/list/id_access
+		for (var/area in inserted_modify_id.access)
+			id_access[num2text(area)] = TRUE
+		.["id_data"] = list(id_access)
+
+/obj/machinery/computer/card/ui_static_data(mob/user)
+	. = list()
+
+	// var/list/console_areas = get_region_accesses(target_dept) // A list of integers refering to each area this console can give access to.
+
+	// Used to colour the access tabs.
+	var/list/colours = list(
+		"white", 	// All
+		"white", 	// General
+		"red",		// Security
+		"blue",		// Medical
+		"violet",	// Research
+		"orange",	// Engineering
+		"brown",	// Supply
+		"yellow",	// Commmand
+	)
+
+	var/list/regions = list()
+	for(var/i in 1 to 7)
+		if(target_dept && !(i in region_access))
+			continue
+
+		var/list/accesses = list()
+		for(var/access in get_region_accesses(i))
+			if (get_access_desc(access))
+				accesses[num2text(access)] = replacetext(get_access_desc(access), "&nbsp", " ")
+
+		regions += list(list(
+			"name" = get_region_accesses_name(i),
+			"regid" = i,
+			"colour" = colours[i],
+			"accesses" = accesses
+		))
+
+	.["regions"] = regions
+
+/obj/machinery/computer/card/ui_interact(mob/user, datum/tgui/ui)
+	// . = ..()
+
+	if (!legacy)
+		if (target_dept != 4)
+			ui = SStgui.try_update_ui(user, src, ui)
+			if(!ui)
+				ui = new(user, src, "idConsole", name)
+				ui.open()
+
+			return
+
 	var/list/dat = list()
 	if (mode == 1) // accessing crew manifest
 		dat += "<tt><b>Crew Manifest:</b><br>Please use security record computer to modify entries.<br><br>"
